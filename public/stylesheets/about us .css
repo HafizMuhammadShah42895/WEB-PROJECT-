@@ -1,0 +1,32 @@
+*body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    justify-content: flex-end; /* Adjusted to flex-end */
+    
+}
+.container{
+    background: url('../images/13.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 70vh;
+}
+.container h1{
+
+   padding-top: 50px;
+    font-style: italic;
+    font-weight: bold;
+  
+    text-transform: capitalize;
+
+}
+.container p{
+
+
+    padding-top: 50px;
+    font-weight: bold;
+   
+    text-transform: capitalize;
+
+}

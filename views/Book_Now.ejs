@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book now</title>
+    <style>
+        .contact {
+            position: relative;
+            min-height: 100vh;
+            padding: 50px 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: url('../public/images/2.jpg');
+            background-size: cover;
+        }
+
+        .contactform {
+            width: 40%;
+            padding: 40px;
+            background: #fff;
+
+
+
+        }
+
+        .contactform h2 {
+            font-size: 30px;
+            color: #333;
+            font-weight: 500;
+
+
+
+
+        }
+
+        .contactform .inputbox {
+            position: relative;
+            width: 100%;
+            margin-top: 10px;
+
+        }
+
+        .contactform .inputbox input,
+        .contactform .inputbox textarea {
+            width: 100%;
+            padding: 5px 0;
+            font-size: 16px;
+            margin: 10px 0;
+            border: none;
+            border-bottom: 2px solid #333;
+            outline: none;
+            resize: none;
+
+
+
+
+        }
+
+        .contactform .inputbox span {
+
+            position: absolute;
+            left: 0;
+            padding: 5px 0;
+            font-size: 16px;
+            margin: 10px 0;
+            pointer-events: none;
+            transition: 0.5s;
+            color: #666;
+
+
+
+        }
+
+        .contactform .inputbox input:focus~span,
+        .contactform .inputbox input:valid~span,
+        .contactform .inputbox textarea:focus~span,
+        .contactform .inputbox textarea:valid~span {
+
+            color: #e91e63;
+            font-size: 12px;
+            transform: translateY(-20px);
+
+        }
+
+        .contactform .inputbox input[type="submit"] {
+
+            width: 100px;
+            background: #00bcd4;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 18px;
+
+
+
+        }
+
+        #lab {
+
+            color: #e91e63;
+            font-size: 12px;
+            transform: translateY(-20px);
+        }
+
+        #sel {
+            width: 300px;
+            margin-top: 20px;
+        }
+
+        .formerror {
+
+            color: red;
+
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+
+    <div class="contact">
+        <div class="contactform">
+            <form action="/booknow" name="myForm" onsubmit="return validateForm()" method="post">
+
+                <h2>Book Now </h2>
+
+                
+                <div class="inputbox" id="id"><input type="number" name="id">
+                    <span>User id</span>
+                    <b>
+                        <div class="formerror"> </div>
+                    </b>
+                </div>
+            
+
+                <div class="inputbox" id="wid"><input type="number" name="wid">
+                    <span>Worker id</span>
+                    <b>
+                        <div class="formerror"> </div>
+                    </b>
+                </div>
+
+                <div class="inputbox" id="hhours"><input type="number" name="hours">
+                    <span>Hours</span>
+                    <b>
+                        <div class="formerror"> </div>
+                    </b>
+                </div>
+
+                <div class="inputbox" id="aaddres"><input type="text" name="addres">
+                    <span>Addres</span>
+                    <b>
+                        <div class="formerror"> </div>
+                    </b>
+                </div>
+
+
+
+                <div class="inputbox">
+                    <label id="lab">Select City</label>
+                    <div class="select">
+                        <select id="sel" name="city">
+                            <option value="Lahore">Lahore</option>
+                            <option value="Karachi">Karachi</option>
+                            <option value="Islamabad">Islamabad</option>
+                        </select>
+                    </div>
+                </div>
+
+            
+
+                <div class="inputbox">
+                    <input type="submit" name="" value="Book Now">
+
+
+
+                </div>
+
+
+        </div>
+
+        </form>
+    </div>
+</body>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        function clearErrors() {
+            $('.formerror').html(" ");
+        }
+
+        function seterror(id, error) {
+            // sets error inside tag of id 
+            $('#' + id + ' .formerror').html(error);             ////////////////////////////////////////////////////////////////////////
+        }
+
+        function validateForm() {
+            var returnval = true;
+            clearErrors();
+
+
+
+           
+
+       
+            var vhours = $('form[name="myForm"] input[name="hours"]').val();
+
+            if (vhours.length === 0) {
+                seterror("hhours", "     *Please enter Hours!");
+                returnval = false;
+            }
+            if (vhours > 8) {
+                seterror("hhours", "     *Maximum you can book for 8 hours !");
+                returnval = false;
+            }
+            var vaddres = $('form[name="myForm"] input[name="addres"]').val();
+
+            if (vhours.length === 0) {
+                seterror("aaddres", "     *Please enter your address!");
+                returnval = false;
+            }
+
+            var vid = $('form[name="myForm"] input[name="id"]').val();
+
+            if (vid.length === 0) {
+                seterror("id", "     *Please enter User ID !");
+                returnval = false;
+            }
+
+            var vwid = $('form[name="myForm"] input[name="wid"]').val();
+
+            if (vwid.length === 0) {
+                seterror("wid", "     *Please enter Worker ID !");
+                returnval = false;
+            }
+            return returnval;
+        }
+
+        
+        $('form[name="myForm"]').submit(function (event) {
+            if (!validateForm()) {
+                event.preventDefault(); // Prevent form submission if validation fails
+            }
+        });
+
+    });
+</script>
+
+
+</html>

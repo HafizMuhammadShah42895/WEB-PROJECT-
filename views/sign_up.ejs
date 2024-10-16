@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign up</title>
+    <style>
+        .contact {
+            position: relative;
+            min-height: 100vh;
+            padding: 50px 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: url('../public/images/14.jpg');
+            background-size: cover;
+        }
+
+        .contactform {
+            width: 40%;
+            padding: 40px;
+            background: #fff;
+
+
+
+        }
+
+        .contactform h2 {
+            font-size: 30px;
+            color: #333;
+            font-weight: 500;
+
+
+
+
+        }
+
+        .contactform .inputbox {
+            position: relative;
+            width: 100%;
+            margin-top: 10px;
+
+        }
+
+        .contactform .inputbox input,
+        .contactform .inputbox textarea {
+            width: 100%;
+            padding: 5px 0;
+            font-size: 16px;
+            margin: 10px 0;
+            border: none;
+            border-bottom: 2px solid #333;
+            outline: none;
+            resize: none;
+
+
+
+
+        }
+
+        .contactform .inputbox span {
+
+            position: absolute;
+            left: 0;
+            padding: 5px 0;
+            font-size: 16px;
+            margin: 10px 0;
+            pointer-events: none;
+            transition: 0.5s;
+            color: #666;
+
+
+
+        }
+
+        .contactform .inputbox input:focus~span,
+        .contactform .inputbox input:valid~span,
+        .contactform .inputbox textarea:focus~span,
+        .contactform .inputbox textarea:valid~span {
+
+            color: #e91e63;
+            font-size: 12px;
+            transform: translateY(-20px);
+
+        }
+
+        .contactform .inputbox input[type="submit"] {
+
+            width: 100px;
+            background: #00bcd4;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 18px;
+
+
+
+        }
+
+        .formerror {
+
+            color: red;
+
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+
+    
+    <div class="contact">
+        <div class="contactform">
+            <form action="/signup" name="myForm" onsubmit="return validateForm()" method="post">
+
+                <h2>Please Sign up </h2>
+                <div class="inputbox" id="nname"><input type="text" name="name"><span>Name</span>
+
+                    <b>
+                        <div class="formerror"> </div>
+                    </b>
+                </div>
+                <div class="inputbox" id="eemail"><input type="email " name="email">
+                    <span>EMAIL</span>
+                    <b>
+                        <div class="formerror"> </div>
+                    </b>
+                </div>
+                <div class="inputbox" id="ppass"><input type="password" name="pass">
+                    <span>Password</span>
+                    <b>
+                        <div class="formerror"> </div>
+                    </b>
+                </div>
+
+                <div class="inputbox" id="ccpass"><input type="password" name="cpass">
+                    <span>Conform Password</span>
+                    <b>
+                        <div class="formerror"> </div>
+                    </b>
+                </div>
+                <div class="inputbox">
+                    <input type="submit" name="" value="Sign up">
+
+
+
+                </div>
+
+
+        </div>
+
+        </form>
+    </div>
+</body>
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        function clearErrors() {
+            $('.formerror').html(" ");
+        }
+
+        function seterror(id, error) {
+            // sets error inside tag of id 
+            $('#' + id + ' .formerror').html(error);             ////////////////////////////////////////////////////////////////////////
+        }
+
+        function validateForm() {
+            var returnval = true;
+            clearErrors();
+
+            var vname = $('form[name="myForm"] input[name="name"]').val();               ///////////////////////////////////////////////
+
+            if (vname.length < 5) {
+                seterror("nname", "     *Name is too short !");
+                returnval = false;
+            }
+
+            if (vname.length > 20) {
+                seterror("nname", "     *Name is too long !");
+                returnval = false;
+            }
+
+            if (vname.length === 0) {
+                seterror("nname", "     *Please enter your name !");
+                returnval = false;
+            }
+
+            var vemail = $('form[name="myForm"] input[name="email"]').val();
+
+            if (vemail.length > 40) {
+                seterror("eemail", "      *Email is too long !");
+                returnval = false;
+            }
+            if (vemail.length === 0) {
+                seterror("eemail", "     *Please enter your email !");
+                returnval = false;
+            }
+
+            var vpass = $('form[name="myForm"] input[name="pass"]').val();
+
+            if (vpass.length === 0) {
+                seterror("ppass", "     *Please enter your password !");
+                returnval = false;
+            }
+            if (vpass.length < 8) {
+                seterror("ppass", "     *Password should be longer than or equal to 8 characters !");
+                returnval = false;
+            }
+
+            var vcpass = $('form[name="myForm"] input[name="cpass"]').val();
+            if (vcpass.length === 0) {
+                seterror("ccpass", "     *Please enter your confirm password !");
+                returnval = false;
+            }
+            if (vcpass !== vpass) {
+                seterror("ccpass", "*     Password is not matching !");
+                returnval = false;
+            }
+
+            return returnval;
+        }
+
+        // Assuming you have a form with the id "myForm" and you want to validate on form submission
+        $('form[name="myForm"]').submit(function (event) {
+            if (!validateForm()) {
+                event.preventDefault(); // Prevent form submission if validation fails
+            }
+        });
+
+    });
+</script>
+
+
+</html>

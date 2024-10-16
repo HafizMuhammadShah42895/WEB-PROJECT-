@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .navbar {
+            background-color: #343a40;
+            border-bottom: 2px solid #17a2b8;
+        }
+
+        .navbar-brand {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #17a2b8;
+        }
+
+        .btn-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .btn-custom {
+            background-color: #17a2b8;
+            color: #ffffff;
+            border: 2px solid #17a2b8;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #1c8f9e;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand ms-5" href="pro.html" id="navbar-icon">Work Enhance</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">HOME</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/about_us">About us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/services">Services</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contact_us">Contact us</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Admin Panel</h1>
+
+    <!-- Buttons -->
+    <div class="btn-container">
+        <a href="/disuser"><button class="btn btn-custom btn-block">Display User Table</button></a>
+        <a href="/disworker"><button class="btn btn-custom btn-block">Display Worker Table</button></a>
+        <a href="/disorder"><button class="btn btn-custom btn-block">Display Order Table</button></a>
+        <a href="/duser"><button class="btn btn-custom btn-block">Delete And Update User</button></a>
+        <a href="/dworker"><button class="btn btn-custom btn-block">Delete Worker</button></a>
+        <a href="/dorder"><button class="btn btn-custom btn-block">Delete Order</button></a>
+        <a href="/join"><button class="btn btn-custom btn-block">JOIN</button></a>
+        <a href="/subquery"><button class="btn btn-custom btn-block">SubQuery</button></a>
+        <a href="/having"><button class="btn btn-custom btn-block">Having</button></a>
+        <a href="/agregate"><button class="btn btn-custom btn-block">Agregate</button></a>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+
+
+
